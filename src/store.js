@@ -17,12 +17,18 @@ export default new Vuex.Store({
      //การทำงาน State
      NEW_TODO(state, data){
         state.todos.push(data)
+     },
+     SET_TODO_STATUS(state, data){
+        state.todos[data.index].isDone = data.status //เปลี่ยนค่า state ที่ตำแหน่งไหน ให้เป็นอะไร
      }
   },
   actions: {
     //การทำงานข้างนอก
     newTodo({commit},data){
       commit('NEW_TODO',data)
+    },
+    setTodoStatus ({commit},data){
+      commit('SET_TODO_STATUS',data)
     }
   }
 })
