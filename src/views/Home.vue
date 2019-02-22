@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <br>
+    <h1>Home</h1><br>
+    Name: <input type="text"><br>
+    <button @click="createTodo()">เพิ่ม TODO</button>
+    <showMessage :message="message" @onAlert="showAlert" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import showMessage from '@/components/ShowMessage'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  components:{
+      showMessage
+  },
+  data(){
+    return{
+      message:'Hello vue js'
+    }
+  },
+  methods:{
+    ...mapActions({
+        newTodo: 'newTodo'
+    }),
+    showAlert(){
+      alert('Hello this is alert')
+    }
   }
 }
 </script>
