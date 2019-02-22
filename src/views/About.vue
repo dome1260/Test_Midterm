@@ -9,6 +9,7 @@
         <button v-if="todo.isDone" @click="setIsDone(index, false)"> undo </button>
       </li>
     </ul>
+    <button @click="clearAll()"> clear done </button>
   </div>
 </template>
 
@@ -18,13 +19,17 @@ import {mapState, mapActions} from 'vuex'
 export default {
   methods:{
     ...mapActions({
-        setTodoStatus: 'setTodoStatus' 
+        setTodoStatus: 'setTodoStatus',
+        clearDone: 'clearDone' 
     }),
     setIsDone(index, status){
       this.setTodoStatus({
           index: index,
           status: status
       })
+    },
+    clearAll(){
+      this.clearDone()
     }
   },
   computed:{
