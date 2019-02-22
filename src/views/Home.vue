@@ -2,7 +2,7 @@
   <div class="home">
     <br>
     <h1>Home</h1><br>
-    Name: <input type="text"><br>
+    Name: <input type="text" v-model="todoName"><br>
     <button @click="createTodo()">เพิ่ม TODO</button>
     <showMessage :message="message" @onAlert="showAlert" />
   </div>
@@ -20,7 +20,8 @@ export default {
   },
   data(){
     return{
-      message:'Hello vue js'
+      message:'Hello vue js',
+      todoName: ''
     }
   },
   methods:{
@@ -29,6 +30,13 @@ export default {
     }),
     showAlert(){
       alert('Hello this is alert')
+    },
+    createTodo(){
+      this.newTodo({
+        name: this.todoName,
+        isDone: false
+      })
+      this.todoName = ''
     }
   }
 }
