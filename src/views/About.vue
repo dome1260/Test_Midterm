@@ -27,9 +27,6 @@ export default {
           index: index,
           status: status
       })
-    },
-    clearAll(){
-      this.clearDone()
     }
   },
   computed:{
